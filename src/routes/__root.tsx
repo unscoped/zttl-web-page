@@ -1,5 +1,12 @@
 import { Outlet, createRootRoute } from '@tanstack/react-router'
+import { ThemeProvider } from '../theme'
 
 export const Route = createRootRoute({
-  component: () => <Outlet />,
+  component: () => (
+    <ThemeProvider>
+      <div className="container">
+        <Outlet />
+      </div>
+    </ThemeProvider>
+  ),
 })
