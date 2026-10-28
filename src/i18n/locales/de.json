@@ -1,0 +1,24 @@
+{
+  "home": {
+    "tbd": "Folgt"
+  },
+  "meta": {
+    "home": {
+      "title": "zttl",
+      "description": "Webseite der zttl-App."
+    },
+    "privacyPolicy": {
+      "title": "Datenschutzerklärung – zttl",
+      "description": "Informationen zur Verarbeitung personenbezogener Daten in der zttl-App."
+    }
+  },
+  "notFound": {
+    "message": "Diese Seite existiert nicht.",
+    "back": "Zur Startseite"
+  },
+  "language": {
+    "label": "Sprache",
+    "translationNotice": "Diese deutsche Fassung ist rechtlich maßgeblich.",
+    "switchToGerman": "Zur verbindlichen deutschen Fassung"
+  }
+}

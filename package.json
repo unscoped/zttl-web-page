@@ -5,13 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cp dist/index.html dist/404.html",
+    "build": "tsc -b && vite build && node scripts/prerender-shells.mjs && cp dist/index.html dist/404.html",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.170.46",
+    "i18next": "^26.5.11",
+    "i18next-browser-languagedetector": "^8.2.3",
     "react": "^19.3.1",
-    "react-dom": "^19.3.1"
+    "react-dom": "^19.3.1",
+    "react-i18next": "^17.1.9",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@tanstack/router-plugin": "^1.168.48",

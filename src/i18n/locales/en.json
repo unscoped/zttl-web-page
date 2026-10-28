@@ -1,0 +1,24 @@
+{
+  "home": {
+    "tbd": "TBD"
+  },
+  "meta": {
+    "home": {
+      "title": "zttl",
+      "description": "Web page of the zttl app."
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy – zttl",
+      "description": "How the zttl app processes personal data."
+    }
+  },
+  "notFound": {
+    "message": "This page does not exist.",
+    "back": "Back to the homepage"
+  },
+  "language": {
+    "label": "Language",
+    "translationNotice": "This English version is a courtesy translation. In case of discrepancies, the German version is legally binding.",
+    "switchToGerman": "Read the binding German version"
+  }
+}

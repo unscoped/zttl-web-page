@@ -1,14 +1,62 @@
+:root {
+    color-scheme: light;
+    --color-background: #ebebee;
+    --color-surface: #fcfcff;
+    --color-text: #000;
+    --color-on-background: #555;
+    --color-primary: #1d3557;
+    --color-border: #d9d9d9;
+}
+
+/* "System" choice: follow the OS unless the user picked light explicitly. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --color-background: #111;
+        --color-surface: #272727;
+        --color-text: #ddd;
+        --color-on-background: #555;
+        --color-primary: #8BAEDF;
+        --color-border: #333;
+    }
+}
+
+/* Explicit choice set by ThemeProvider (src/theme.tsx). */
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-background: #111;
+    --color-surface: #272727;
+    --color-text: #ddd;
+    --color-on-background: #555;
+    --color-primary: #8BAEDF;
+    --color-border: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 h1, h2 {
-    color: #0056b3;
+    color: var(--color-primary);
 }
 
 h1 {
@@ -25,10 +73,60 @@ p {
 }
 
 a {
-    color: #0056b3;
+    color: var(--color-primary);
     text-decoration: none;
 }
 
 a:hover {
+    text-decoration: underline;
+}
+
+.language-switcher {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 12px auto;
+}
+
+.language-switcher__icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--color-primary);
+    pointer-events: none;
+}
+
+.language-switcher__icon--end {
+    left: auto;
+    right: 12px;
+}
+
+.language-switcher select {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 4px 34px 4px 38px;
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.translation-notice {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+}
+
+.link-button {
+    font: inherit;
+    padding: 0;
+    color: var(--color-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
     text-decoration: underline;
 }
