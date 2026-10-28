@@ -17,6 +17,7 @@
     "back": "Zur Startseite"
   },
   "language": {
+    "label": "Sprache",
     "translationNotice": "Diese deutsche Fassung ist rechtlich maßgeblich.",
     "switchToGerman": "Zur verbindlichen deutschen Fassung"
   }

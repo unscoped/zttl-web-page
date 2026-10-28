@@ -17,6 +17,7 @@
     "back": "Back to the homepage"
   },
   "language": {
+    "label": "Language",
     "translationNotice": "This English version is a courtesy translation. In case of discrepancies, the German version is legally binding.",
     "switchToGerman": "Read the binding German version"
   }

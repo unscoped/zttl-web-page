@@ -81,6 +81,39 @@ a:hover {
     text-decoration: underline;
 }
 
+.language-switcher {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 12px auto;
+}
+
+.language-switcher__icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: var(--color-primary);
+    pointer-events: none;
+}
+
+.language-switcher__icon--end {
+    left: auto;
+    right: 12px;
+}
+
+.language-switcher select {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 4px 34px 4px 38px;
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
 .translation-notice {
     padding: 10px 14px;
     font-size: 0.9rem;
