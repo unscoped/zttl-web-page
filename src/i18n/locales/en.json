@@ -15,5 +15,9 @@
   "notFound": {
     "message": "This page does not exist.",
     "back": "Back to the homepage"
+  },
+  "language": {
+    "translationNotice": "This English version is a courtesy translation. In case of discrepancies, the German version is legally binding.",
+    "switchToGerman": "Read the binding German version"
   }
 }

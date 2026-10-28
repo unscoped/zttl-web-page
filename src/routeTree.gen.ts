@@ -10,14 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DeRouteRouteImport } from './routes/de/route'
 import { Route as EnRouteRouteImport } from './routes/en/route'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as DeIndexRouteImport } from './routes/de/index'
+import { Route as DeDatenschutzRouteImport } from './routes/de/datenschutz'
 import { Route as EnIndexRouteImport } from './routes/en/index'
 import { Route as EnPrivacyPolicyRouteImport } from './routes/en/privacy-policy'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeRouteRoute = DeRouteRouteImport.update({
+  id: '/de',
+  path: '/de',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnRouteRoute = EnRouteRouteImport.update({
@@ -29,6 +37,16 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DeIndexRoute = DeIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DeRouteRoute,
+} as any)
+const DeDatenschutzRoute = DeDatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
+  getParentRoute: () => DeRouteRoute,
 } as any)
 const EnIndexRoute = EnIndexRouteImport.update({
   id: '/',
@@ -43,36 +61,67 @@ const EnPrivacyPolicyRoute = EnPrivacyPolicyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/de': typeof DeRouteRouteWithChildren
   '/en': typeof EnRouteRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/de/datenschutz': typeof DeDatenschutzRoute
   '/en/privacy-policy': typeof EnPrivacyPolicyRoute
+  '/de/': typeof DeIndexRoute
   '/en/': typeof EnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/de/datenschutz': typeof DeDatenschutzRoute
   '/en/privacy-policy': typeof EnPrivacyPolicyRoute
+  '/de': typeof DeIndexRoute
   '/en': typeof EnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/de': typeof DeRouteRouteWithChildren
   '/en': typeof EnRouteRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/de/datenschutz': typeof DeDatenschutzRoute
   '/en/privacy-policy': typeof EnPrivacyPolicyRoute
+  '/de/': typeof DeIndexRoute
   '/en/': typeof EnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/en' | '/privacy-policy' | '/en/privacy-policy' | '/en/'
+  fullPaths:
+    | '/'
+    | '/de'
+    | '/en'
+    | '/privacy-policy'
+    | '/de/datenschutz'
+    | '/en/privacy-policy'
+    | '/de/'
+    | '/en/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy-policy' | '/en/privacy-policy' | '/en'
+  to:
+    | '/'
+    | '/privacy-policy'
+    | '/de/datenschutz'
+    | '/en/privacy-policy'
+    | '/de'
+    | '/en'
   id:
-    '__root__' | '/' | '/en' | '/privacy-policy' | '/en/privacy-policy' | '/en/'
+    | '__root__'
+    | '/'
+    | '/de'
+    | '/en'
+    | '/privacy-policy'
+    | '/de/datenschutz'
+    | '/en/privacy-policy'
+    | '/de/'
+    | '/en/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DeRouteRoute: typeof DeRouteRouteWithChildren
   EnRouteRoute: typeof EnRouteRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
 }
@@ -84,6 +133,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/de': {
+      id: '/de'
+      path: '/de'
+      fullPath: '/de'
+      preLoaderRoute: typeof DeRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/en': {
@@ -99,6 +155,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/de/': {
+      id: '/de/'
+      path: '/'
+      fullPath: '/de/'
+      preLoaderRoute: typeof DeIndexRouteImport
+      parentRoute: typeof DeRouteRoute
+    }
+    '/de/datenschutz': {
+      id: '/de/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/de/datenschutz'
+      preLoaderRoute: typeof DeDatenschutzRouteImport
+      parentRoute: typeof DeRouteRoute
     }
     '/en/': {
       id: '/en/'
@@ -117,6 +187,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface DeRouteRouteChildren {
+  DeDatenschutzRoute: typeof DeDatenschutzRoute
+  DeIndexRoute: typeof DeIndexRoute
+}
+
+const DeRouteRouteChildren: DeRouteRouteChildren = {
+  DeDatenschutzRoute: DeDatenschutzRoute,
+  DeIndexRoute: DeIndexRoute,
+}
+
+const DeRouteRouteWithChildren =
+  DeRouteRoute._addFileChildren(DeRouteRouteChildren)
+
 interface EnRouteRouteChildren {
   EnPrivacyPolicyRoute: typeof EnPrivacyPolicyRoute
   EnIndexRoute: typeof EnIndexRoute
@@ -132,6 +215,7 @@ const EnRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DeRouteRoute: DeRouteRouteWithChildren,
   EnRouteRoute: EnRouteRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
 }
