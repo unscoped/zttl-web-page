@@ -16,3 +16,6 @@ Pushes to `main` are built and deployed to GitHub Pages by `.github/workflows/de
 (repo Settings → Pages → Source must be "GitHub Actions"). The custom domain comes from
 `public/CNAME`. The build copies `index.html` to `404.html` so deep links work on Pages, and
 `public/privacy-policy.html` redirects the legacy `/privacy-policy.html` URL to `/privacy-policy`.
+
+## Content
+The privacy policy is plain Markdown in `src/content/privacy-policy.en.md`, rendered with react-markdown.

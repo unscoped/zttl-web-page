@@ -1,39 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
+import Markdown from 'react-markdown'
+import policy from '../content/privacy-policy.en.md?raw'
 
 export const Route = createFileRoute('/privacy-policy')({
   component: PrivacyPolicy,
 })
 
 function PrivacyPolicy() {
-  return (
-    <>
-      <h1>Privacy Policy</h1>
-      <p>This privacy policy applies to the <strong>zttl</strong> app (hereby referred to as "Application") for mobile devices that was created by <strong>Unscoped</strong> (hereby referred to as "Service Provider") as a Freemium service. This service is intended for use "AS IS".</p>
-
-      <h2>What information does the Application obtain and how is it used?</h2>
-      <p>The Application does not obtain any information when you download and use it. Registration is not required to use the Application.</p>
-
-      <h2>Does the Application collect precise real time location information of the device?</h2>
-      <p>This Application does not collect precise information about the location of your mobile device.</p>
-
-      <h2>Do third parties see and/or have access to information obtained by the Application?</h2>
-      <p>We use the Android and iOS Sentry SDK to identify and monitor software errors, API call performance, and page load times. The collected data does not include personally identifiable information (PII). It may, however, contain details such as device model, operating system, IP address, and general device information to assist in debugging and improving performance.</p>
-
-      <h2>What are my opt-out rights?</h2>
-      <p>You can stop all collection of information by the Application easily by uninstalling it. You may use the standard uninstall processes as may be available as part of your mobile device or via the mobile application marketplace or network.</p>
-
-      <h2>Security</h2>
-      <p>The Service Provider is concerned about safeguarding the confidentiality of your information. However, since the Application does not collect any information, there is no risk of your data being accessed by unauthorized individuals.</p>
-
-      <h2>Changes</h2>
-      <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to their Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.</p>
-      <p><strong>This privacy policy is effective as of 2024-12-04</strong></p>
-
-      <h2>Your Consent</h2>
-      <p>By using the Application, you are consenting to the processing of your information as set forth in this Privacy Policy now and as amended by the Service Provider.</p>
-
-      <h2>Contact Us</h2>
-      <p>If you have any questions regarding privacy while using the Application, or have questions about the practices, please contact the Service Provider via email at <a href="mailto:info@zttl.app">info@zttl.app</a>.</p>
-    </>
-  )
+  return <Markdown>{policy}</Markdown>
 }
