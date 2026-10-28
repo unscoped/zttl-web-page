@@ -1,11 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
-import Markdown from 'react-markdown'
-import policy from '../content/privacy-policy.en.md?raw'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import i18n from '../i18n'
+import { PAGES, toLang } from '../i18n/paths'
 
+// Legacy language-less URL (also the target of public/privacy-policy.html).
 export const Route = createFileRoute('/privacy-policy')({
-  component: PrivacyPolicy,
+  beforeLoad: () => {
+    throw redirect({ to: PAGES.privacyPolicy[toLang(i18n.resolvedLanguage)], replace: true })
+  },
 })
-
-function PrivacyPolicy() {
-  return <Markdown>{policy}</Markdown>
-}

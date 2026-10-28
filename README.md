@@ -19,3 +19,8 @@ Pushes to `main` are built and deployed to GitHub Pages by `.github/workflows/de
 
 ## Content
 The privacy policy is plain Markdown in `src/content/privacy-policy.en.md`, rendered with react-markdown.
+
+## URLs
+Pages live under a language prefix. The home page is `/en` and the privacy policy is `/en/privacy-policy`.
+`/` and `/privacy-policy` redirect to the saved or browser language. `src/i18n/paths.ts` is the single list
+of these paths.
